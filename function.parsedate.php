@@ -12,8 +12,11 @@
  */
 
 function parsedate ($data, $force = false) {
-	if (ereg ('([0-9]{1,2})\. ?([0-9]{1,2})\. ?([1-9][0-9]{3})( -? ?([0-9]{1,2}):([0-9]{1,2})([:.]([0-9]{1,2}))?)?', $data, $datum))
-		$output = mktime ($datum[5] ? $datum[5] : 12,$datum[6] ? $datum[6] : 0, $datum[8] ? $datum[8] : 0, $datum[2], $datum[1], $datum[3]);
+	if (preg_match ('/([0-9]{9,11})/', $data, $datum))
+		$output = $datum[1];
+	elseif (preg_match ('/([0-9]{1,2})\. ?([0-9]{1,2})\. ?([1-9][0-9]{3})( -? ?([0-9]{1,2}):([0-9]{1,2})([:.]([0-9]{1,2}))?)?/', $data, $datum)) {
+		$output = mktime ($datum[5] ? $datum[5] : 12, $datum[6] ? $datum[6] : 0, $datum[8] ? $datum[8] : 0, $datum[2], $datum[1], $datum[3]);
+		}
 	elseif ($force)
 		$output = mktime (12,0,0);
 	else

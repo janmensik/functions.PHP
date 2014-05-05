@@ -4,6 +4,14 @@
 * @return bool syntaktická správnost adresy
 * @copyright Jakub Vrána, http://php.vrana.cz/
 */
+
+function check_email($email) {
+  $atom = '[-a-z0-9!#$%&\'*+/=?^_`{|}~]';
+  $domain = '[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])';
+  return preg_match(":^$atom+(\\.$atom+)*@($domain?\\.)+$domain\$:i", $email);
+}
+
+/*
 function check_email($email) {
 	// preg pattern for user name
 	// http://tools.ietf.org/html/rfc2822#section-3.2.4
@@ -24,4 +32,5 @@ function check_email($email) {
 		}
 	return FALSE;
 	}
+*/
 ?>

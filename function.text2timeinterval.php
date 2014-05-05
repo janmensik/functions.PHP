@@ -41,7 +41,8 @@ function text2timeinterval ($input, $now = null) {
 			break;
 		case "lastmonth":
 			$from = strtotime ('-1 month', $now);
-			$till = strtotime ('-1 month', $now);
+			//$till = strtotime ('-1 month', $now);
+			$till = mktime (12, 0, 0, date ('n', $now)-1, 5, date ('Y', $now));
 			$output['from'] = mktime (0, 0, 0, date ('n', $from), 1, date ('Y', $from));
 			$output['till'] = mktime (23, 59, 59, date ('n', $till), date ('t', $till), date ('Y', $till));
 			break;

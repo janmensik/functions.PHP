@@ -2,7 +2,7 @@
 # ěšččřžýáýů
 
 # vrati pole s aktualnimi kurzy.
-function kurzy_cnb ($cacheFile = '../cache/kurzy_cnb.txt') {
+function kurzy_cnb ($cacheFile = './cache/kurzy_cnb.txt') {
 	static $data;
   $cacheDuration = 3600; # 1 hodina
 
